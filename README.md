@@ -11,14 +11,14 @@ El jugador controla un tarro en la parte inferior de la pantalla, moviéndose la
   El objetivo es maximizar la puntuación recolectando gotas buenas.
 
 - **Sistema de Vidas y Puntuación:**  
-  El jugador comienza con 3 vidas. Perderá una si es golpeado por una gota mala (granizo).  
+  El jugador comienza con 3 vidas. Perderá una si es golpeado por un granizo.  
   Cada gota buena recolectada suma puntos.
 
 - **Potenciador de Velocidad:**  
-  Un tipo especial de gota (*gotaPower*) activa un "boost" temporal que incrementa significativamente la velocidad de movimiento del jugador.
+  Un tipo especial de gota (*Mao Zedong*) activa un "boost" temporal que incrementa significativamente la velocidad de movimiento del jugador.
 
 - **Dificultad Progresiva:**  
-  El juego incrementa su desafío con el tiempo. A medida que el jugador sube de nivel, la velocidad de caída de las gotas aumenta y el intervalo entre su aparición disminuye.
+  El juego incrementa su desafío con el tiempo. A medida que el jugador sube de nivel, la velocidad de caída de las gotas aumenta exponencialmente y el intervalo entre su aparición disminuye.
 
 - **Fondos Dinámicos:**  
   El escenario transiciona automáticamente a través de un ciclo de día, tarde y noche, con fundidos suaves entre cada fondo.
