@@ -1,6 +1,6 @@
 # Rain Rush
 
-**Rain Rush** es un juego arcade de estilo *“atrapa las gotas”* desarrollado en **Java** utilizando el framework **LibGDX**.  
+**Rain Rush** es un juego arcade de estilo *“atrapa las gotas”* desarrollado en **Java** utilizando el framework **LibGDX** con el backend **LWJGL3** para ejecución en escritorio.  
 El jugador controla un tarro en la parte inferior de la pantalla, moviéndose lateralmente para recolectar gotas beneficiosas y potenciar su velocidad, mientras esquiva granizos dañinos que reducen sus vidas.
 
 ---
@@ -104,6 +104,7 @@ Para que el juego funcione correctamente, la carpeta `assets` debe contener los 
 
 - **Lenguaje:** Java 8 o superior  
 - **Framework:** LibGDX  
+- **Backend:** LWJGL3 (Lightweight Java Game Library 3)  
 - **Herramienta de compilación:** Gradle o IntelliJ IDEA  
 - **Sistema operativo:** Windows, Linux o macOS  
 
@@ -117,7 +118,9 @@ Para que el juego funcione correctamente, la carpeta `assets` debe contener los 
    git clone https://github.com/usuario/rain-rush.git
 2. Abrir el proyecto en tu IDE preferido (por ejemplo, IntelliJ IDEA o Eclipse).
 
-3. Ejecutar la clase principal:
-GameLluviaMenu.java
+3. Asegurarse de tener configurado el módulo LWJGL3 (por defecto en los proyectos de LibGDX modernos).
+El punto de entrada se encuentra en:
 
-4. Disfruta del juego.
+4. desktop/src/com/tu_paquete/lwjgl3/Lwjgl3Launcher.java
+
+5. Ejecutar la clase Lwjgl3Launcher para iniciar el juego.
