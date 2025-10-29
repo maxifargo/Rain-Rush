@@ -102,7 +102,8 @@ Para que el juego funcione correctamente, la carpeta `assets` debe contener los 
 
 ## Requisitos del Sistema
 
-- **Lenguaje:** Java 8 o superior  
+- **Lenguaje:** Java 8 o superior
+- **version JDK:** 11 o superior 
 - **Framework:** LibGDX  
 - **Backend:** LWJGL3 (Lightweight Java Game Library 3)  
 - **Herramienta de compilación:** Gradle o IntelliJ IDEA  
