@@ -40,6 +40,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 		public void setHigherScore(int higherScore) {
 			this.higherScore = higherScore;
 		}
-		
 
 	}
