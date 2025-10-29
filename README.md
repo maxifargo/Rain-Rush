@@ -118,10 +118,12 @@ Para que el juego funcione correctamente, la carpeta `assets` debe contener los 
    bash
    git clone https://github.com/usuario/rain-rush.git
 2. Abrir el proyecto en tu IDE preferido (por ejemplo, IntelliJ IDEA o Eclipse).
+  
+3. En caso de no verse bien las carpetas hacerle click derecho/gradle/refresh gradle proyect para que compile bien 
 
-3. Asegurarse de tener configurado el módulo LWJGL3 (por defecto en los proyectos de LibGDX modernos).
+4. Asegurarse de tener configurado el módulo LWJGL3 (por defecto en los proyectos de LibGDX modernos).
 El punto de entrada se encuentra en:
 
-4. desktop/src/com/tu_paquete/lwjgl3/Lwjgl3Launcher.java
+5. desktop(lwjgl3)/src/main/java/puppy.code.lwjgl3/lwjgl3Launcher.java
 
-5. Ejecutar la clase Lwjgl3Launcher para iniciar el juego.
+6. Ejecutar la clase Lwjgl3Launcher para iniciar el juego.
