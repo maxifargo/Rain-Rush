@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -55,9 +54,7 @@ public class GameScreen implements Screen {
         this.batch = game.getBatch();
         this.font = game.getFont();
 
-        // sonidos e imágenes
-        Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
-        tarro = new Tarro(new Texture(Gdx.files.internal("bucket.png")), hurtSound);
+        tarro = new Tarro();
 
         // 🎵 música
         musicIntro = Gdx.audio.newMusic(Gdx.files.internal("musicintro.ogg"));
@@ -68,12 +65,11 @@ public class GameScreen implements Screen {
         musicIntro.setVolume(0.3f);
         musicLoop.setVolume(0.2f);
 
-        // lluvia
-        Texture gota = new Texture(Gdx.files.internal("drop.png"));
-        Texture gotaMala = new Texture(Gdx.files.internal("dropBad.png"));
-        Sound dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-        Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
-        lluvia = new Lluvia(gota, gotaMala, dropSound, rainMusic);
+        Music mLluvia = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
+
+        lluvia = new Lluvia(mLluvia);
+
+
 
         // cámara y shape
         camera = new OrthographicCamera();
@@ -177,13 +173,6 @@ public class GameScreen implements Screen {
         font.draw(batch, "Vidas: " + tarro.getVidas(), 670, 470);
         font.draw(batch, "HighScore: " + game.getHigherScore(), 340, 450);
 
-        // Nivel
-        switch (bgCurrent) {
-            case 0: font.setColor(Color.GOLD); break;
-            case 1: font.setColor(Color.ORANGE); break;
-            case 2: font.setColor(Color.SKY); break;
-            default: font.setColor(Color.WHITE); break;
-        }
 
         font.draw(batch, "Nivel: " + lluvia.getNivel(), 20, 40);
         font.setColor(Color.WHITE);
@@ -200,7 +189,7 @@ public class GameScreen implements Screen {
         }
 
         tarro.dibujar(batch);
-        lluvia.actualizarDibujoLluvia(batch);
+        lluvia.dibujar(batch);
         batch.end();
 
         // Debug 
