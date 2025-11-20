@@ -22,7 +22,7 @@ public class MainMenuScreen implements Screen {
 
     // Textos del menú
     private String message1 = "Bienvenido a Rain Rush";
-    private String message2 = "a click para comenzar!!!";
+    private String message2 = "haz click para comenzar!!!";
 
     // Layout para medir y centrar texto
     private GlyphLayout layout;
