@@ -7,5 +7,5 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public interface Colisionable {
     Rectangle getArea();
-    void onColision(Colisionable otro);
+    void onColision(Colisionable otro); 
 }
