@@ -61,7 +61,7 @@ public class GameScreen implements Screen {
         musicLoop = Gdx.audio.newMusic(Gdx.files.internal("musicloop.ogg"));
         musicLoop.setLooping(true);
 
-        // 🔉 establecer volumen 40%
+        // 🔉 establecer volumen
         musicIntro.setVolume(0.3f);
         musicLoop.setVolume(0.2f);
 
@@ -96,7 +96,7 @@ public class GameScreen implements Screen {
     }
 
 
-    // 🎵 MÚSICA DE INTRO + LOOP
+    // MÚSICA DE INTRO + LOOP
 
     @Override
     public void show() {
@@ -116,7 +116,7 @@ public class GameScreen implements Screen {
     }
 
     
-    // 🎮 LÓGICA PRINCIPAL
+    //LÓGICA PRINCIPAL
     
     @Override
     public void render(float delta) {
@@ -231,4 +231,3 @@ public class GameScreen implements Screen {
         if (musicLoop != null) musicLoop.dispose();
     }
 }
-
