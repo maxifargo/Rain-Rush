@@ -68,12 +68,11 @@ public class MainMenuScreen implements Screen {
         float y2 = y1 - 70; // distancia vertical entre líneas
         font.draw(batch, layout, x2, y2);
 
-        // volver a tamaño original para no afectar otros textos
         font.getData().setScale(2f);
 
         batch.end();
 
-        // 🔹 Cambiar de pantalla si el jugador toca
+        // Cambiar de pantalla si el jugador toca
         if (Gdx.input.isTouched()) {
             game.setScreen(new GameScreen(game));
             dispose();
