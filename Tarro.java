@@ -2,15 +2,14 @@ package puppy.code;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Tarro extends Entidad implements Colisionable {
+
     private Texture imagen;
-    private Sound sonidoDano;
     private Rectangle area;
     private int vidas;
     private int puntos;
@@ -30,10 +29,14 @@ public class Tarro extends Entidad implements Colisionable {
     private long tiempoBoostInicio = 0L;
     private static final long DURACION_BOOST = 5_000_000_000L;
 
-    public Tarro(Texture textura, Sound sonido) {
-        super(0, 0); //Llamada al constructor de Entidad
-        this.imagen = textura;
-        this.sonidoDano = sonido;
+
+    // -------------------------------------------------------------
+    // USANDO SINGLETON (no se pasan recursos por parámetro)
+    // -------------------------------------------------------------
+    public Tarro() {
+        super(0, 0);
+
+        this.imagen = SpriteManager.getInstance().tarro;
         this.vidas = 3;
         this.puntos = 0;
 
@@ -41,6 +44,7 @@ public class Tarro extends Entidad implements Colisionable {
         float alto = 56;
         this.area = new Rectangle(800 / 2f - ancho / 2f, 20, ancho, alto);
     }
+
 
     @Override
     public void crear() {
@@ -53,6 +57,7 @@ public class Tarro extends Entidad implements Colisionable {
         herido = false;
         boostActivo = false;
     }
+
 
     @Override
     public void actualizarMovimiento() {
@@ -85,6 +90,9 @@ public class Tarro extends Entidad implements Colisionable {
         if (area.x < 0) area.x = 0;
         if (area.x > 800 - area.width) area.x = 800 - area.width;
 
+        this.x = area.x;
+        this.y = area.y;
+
         if (!enSuelo) {
             velocidadY += gravedad * delta;
             area.y += velocidadY * delta;
@@ -97,8 +105,10 @@ public class Tarro extends Entidad implements Colisionable {
         }
     }
 
+
     @Override
     public void dibujar(SpriteBatch batch) {
+
         if (herido) {
             float t = (System.nanoTime() / 150_000_000) % 2;
             batch.setColor(t == 0 ? Color.RED : Color.WHITE);
@@ -120,37 +130,43 @@ public class Tarro extends Entidad implements Colisionable {
         batch.setColor(Color.WHITE);
     }
 
-    // INTERFAZ 
+
+    // ----- INTERFAZ -----
     @Override
     public Rectangle getArea() { return area; }
 
     @Override
-    public void onColision(Colisionable otro) {
-        dañar();
+    public void onColision(Colisionable otro) { // El tarro no reacciona directamente;
+        										// las gotas manejan la lógica de colisión.
     }
+ 
 
-    @Override
-    public void destruir() {
-        if (imagen != null) imagen.dispose();
-        if (sonidoDano != null) sonidoDano.dispose();
-    }
 
-    // Lógica adicional
+    // ----- Lógica propia -----
     public void dañar() {
         if (!herido) {
             herido = true;
             tiempoHeridoInicio = System.nanoTime();
             vidas--;
-            sonidoDano.play(0.3f);
+            SpriteManager.getInstance().sonidoGotaMala.play(0.35f);
         }
     }
 
+
     public void restarVida() { dañar(); }
+
     public void activarBoostVelocidad() {
         boostActivo = true;
         tiempoBoostInicio = System.nanoTime();
         velocidad = 550f;
     }
+    
+    @Override
+    public void destruir() {
+        // El tarro no destruye texturas (SpriteManager las maneja)
+    }
+
+
     public int getVidas() { return vidas; }
     public int getPuntos() { return puntos; }
     public void sumarPuntos(int cantidad) { puntos += cantidad; }
